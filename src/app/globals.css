@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: "Geist", system-ui, -apple-system, sans-serif;
+    --font-mono: "IBM Plex Mono", monospace;
+
+    /* Default brand (neutral) */
+    --brand-primary: 220 14% 20%;
+    --brand-primary-foreground: 0 0% 100%;
+
+    --background: 0 0% 98%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: var(--brand-primary);
+    --primary-foreground: var(--brand-primary-foreground);
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: var(--brand-primary);
+
+    --radius: 0.5rem;
+
+    --shadow-layered:
+      0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-elevated:
+      0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+
+    /* Partner shell surfaces */
+    --partner-page-background: #f8fafc;
+    --partner-header-background: rgba(255, 255, 255, 0.92);
+    --partner-footer-background: rgba(255, 255, 255, 0.9);
+    --partner-card-background: rgba(255, 255, 255, 0.9);
+    --partner-card-border: rgba(15, 23, 42, 0.08);
+    --partner-headline-color: hsl(var(--foreground));
+    --partner-description-color: hsl(var(--muted-foreground));
+    --partner-body-text-color: hsl(var(--foreground));
+    --partner-accent-shadow: 0 14px 38px rgba(15, 23, 42, 0.08);
+    --partner-badge-background: hsl(var(--brand-primary));
+    --partner-badge-shadow: 0 8px 20px hsl(var(--brand-primary) / 0.3);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Optional partner defaults injected via data attribute */
+  [data-partner="absa"] {
+    --brand-primary: 354 85% 44%;
+    --brand-primary-foreground: 0 0% 100%;
+    --radius: 0.5rem;
+    --partner-page-background: #fef2f2;
+    --partner-header-background: rgba(255, 245, 245, 0.92);
+    --partner-footer-background: rgba(255, 247, 247, 0.9);
+    --partner-card-background: rgba(255, 255, 255, 0.95);
+    --partner-card-border: rgba(185, 28, 28, 0.2);
+    --partner-accent-shadow: 0 16px 32px rgba(127, 29, 29, 0.12);
+  }
+
+  [data-partner="nedbank"] {
+    --brand-primary: 142 76% 28%;
+    --brand-primary-foreground: 0 0% 100%;
+    --radius: 0rem;
+    --partner-page-background: #f0fdf4;
+    --partner-header-background: rgba(240, 253, 244, 0.92);
+    --partner-footer-background: rgba(236, 253, 245, 0.9);
+    --partner-card-background: rgba(255, 255, 255, 0.95);
+    --partner-card-border: rgba(5, 150, 105, 0.24);
+    --partner-accent-shadow: 0 18px 34px rgba(6, 95, 70, 0.13);
+  }
+
+  [data-partner="fnb"] {
+    --brand-primary: 32 95% 44%;
+    --brand-primary-foreground: 0 0% 100%;
+    --radius: 0.75rem;
+    --partner-page-background: #fffbeb;
+    --partner-header-background: rgba(255, 251, 235, 0.92);
+    --partner-footer-background: rgba(255, 251, 235, 0.9);
+    --partner-card-background: rgba(255, 255, 255, 0.95);
+    --partner-card-border: rgba(217, 119, 6, 0.2);
+    --partner-accent-shadow: 0 16px 32px rgba(146, 64, 14, 0.12);
+  }
+
+  [data-partner="standardbank"] {
+    --brand-primary: 210 100% 35%;
+    --brand-primary-foreground: 0 0% 100%;
+    --radius: 0.25rem;
+    --partner-page-background: #eff6ff;
+    --partner-header-background: rgba(239, 246, 255, 0.92);
+    --partner-footer-background: rgba(239, 246, 255, 0.9);
+    --partner-card-background: rgba(255, 255, 255, 0.95);
+    --partner-card-border: rgba(30, 64, 175, 0.22);
+    --partner-accent-shadow: 0 17px 34px rgba(30, 64, 175, 0.13);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight;
+  }
+}
+
+@layer components {
+  .partner-shell-bg {
+    background: var(--partner-page-background);
+  }
+
+  .partner-header-surface {
+    background: var(--partner-header-background);
+    backdrop-filter: blur(8px);
+  }
+
+  .partner-footer-surface {
+    background: var(--partner-footer-background);
+  }
+
+  .partner-card-surface {
+    background: var(--partner-card-background);
+    border-color: var(--partner-card-border);
+    box-shadow: var(--partner-accent-shadow), var(--shadow-layered);
+  }
+
+  .partner-brand-badge {
+    background: var(--partner-badge-background);
+    box-shadow: var(--partner-badge-shadow);
+  }
+
+  .form-container {
+    box-shadow: var(--shadow-layered);
+  }
+
+  .form-container-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .progress-bar {
+    @apply fixed top-0 left-0 h-[2px] z-50;
+    background: hsl(var(--brand-primary));
+    transition: width 0.3s ease;
+  }
+
+  .field-focus {
+    @apply ring-2 ring-offset-2;
+    --tw-ring-color: hsl(var(--brand-primary));
+  }
+
+  .btn-press {
+    @apply transition-transform active:scale-[0.97];
+  }
+
+  .mono {
+    font-family: var(--font-mono);
+  }
+}
