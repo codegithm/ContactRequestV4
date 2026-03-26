@@ -22,11 +22,6 @@ const partnerRegistry: Record<string, PartnerConfig> = {
     settings: {
       vdn: "ABSA001",
       brokerCode: "ABS-BROKER",
-      extra: {
-        sourceSystem: "contactrequest-ui",
-        sourceChannel: "web",
-        consentCaptured: true,
-      },
     },
     theme: {
       primary: "354 85% 44%",
@@ -210,11 +205,6 @@ const partnerRegistry: Record<string, PartnerConfig> = {
     settings: {
       vdn: "NED001",
       brokerCode: "NED-BROKER",
-      extra: {
-        sourceSystem: "contactrequest-ui",
-        sourceChannel: "web",
-        consentCaptured: true,
-      },
     },
     theme: {
       primary: "142 76% 28%",
@@ -387,11 +377,6 @@ const partnerRegistry: Record<string, PartnerConfig> = {
     settings: {
       vdn: "FNB001",
       brokerCode: "FNB-BROKER",
-      extra: {
-        sourceSystem: "contactrequest-ui",
-        sourceChannel: "web",
-        consentCaptured: true,
-      },
     },
     theme: {
       primary: "32 95% 44%",

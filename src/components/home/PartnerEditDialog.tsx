@@ -18,13 +18,15 @@ import {
   DrawerTitle,
 } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
+import AdminSettingsFields from "@/components/home/AdminSettingsFields";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useVdnDirectory } from "@/hooks/useVdnDirectory";
 import { useLoading } from "@/components/loading-context";
 import { createPartnerConfigStore } from "@/lib/partner-config-store";
-import type { PartnerConfig, PartnerSettingValue } from "@/lib/partners";
+import type { PartnerConfig } from "@/lib/partners";
 import {
   createEditableFieldFromCatalog,
   createSectionId,
@@ -62,6 +64,12 @@ import {
   defaultRadixPanelBackground,
   defaultRadixAppearance,
 } from "@/components/home/home-page-constants";
+import {
+  buildExtraSettingDrafts,
+  serializeExtraSettingDrafts,
+  type ExtraSettingDraft,
+} from "@/lib/partner-settings";
+import { findVdnDirectoryEntry } from "@/lib/vdn-directory";
 
 const store = createPartnerConfigStore();
 
@@ -143,7 +151,7 @@ export default function PartnerEditDialog({
   );
   const [vdn, setVdn] = useState("");
   const [brokerCode, setBrokerCode] = useState("");
-  const [extraSettingsJson, setExtraSettingsJson] = useState("");
+  const [extraSettings, setExtraSettings] = useState<ExtraSettingDraft[]>([]);
   const [isActive, setIsActive] = useState(true);
   const [feedback, setFeedback] = useState(false);
   const [enableReferralSection, setEnableReferralSection] = useState(false);
@@ -165,6 +173,11 @@ export default function PartnerEditDialog({
   >(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const {
+    entries: vdnDirectoryEntries,
+    isLoading: isVdnDirectoryLoading,
+    error: vdnDirectoryError,
+  } = useVdnDirectory();
 
   useEffect(() => {
     if (!partner || !open) return;
@@ -205,11 +218,7 @@ export default function PartnerEditDialog({
         ? partner.settings.brokerCode
         : "",
     );
-    setExtraSettingsJson(
-      partner.settings?.extra
-        ? JSON.stringify(partner.settings.extra, null, 2)
-        : "",
-    );
+    setExtraSettings(buildExtraSettingDrafts(partner.settings));
     setIsActive(partner.isActive !== false);
     setFeedback(!!partner.feedback);
     const referralSection = partner.sections?.find(isReferralSection);
@@ -274,6 +283,20 @@ export default function PartnerEditDialog({
         : null,
     [fields, desktopFieldDrawerId],
   );
+
+  useEffect(() => {
+    if (!vdn.trim()) {
+      if (brokerCode) {
+        setBrokerCode("");
+      }
+      return;
+    }
+
+    const matchedEntry = findVdnDirectoryEntry(vdn, vdnDirectoryEntries);
+    if (matchedEntry && brokerCode !== matchedEntry.brokerCode) {
+      setBrokerCode(matchedEntry.brokerCode);
+    }
+  }, [brokerCode, vdn, vdnDirectoryEntries]);
 
   if (!partner) return null;
 
@@ -378,17 +401,16 @@ export default function PartnerEditDialog({
   };
 
   const handleSave = async () => {
-    let parsedExtraSettings: Record<string, PartnerSettingValue> | undefined;
-    if (extraSettingsJson.trim()) {
-      try {
-        parsedExtraSettings = JSON.parse(extraSettingsJson) as Record<
-          string,
-          PartnerSettingValue
-        >;
-      } catch {
-        setError("Extra settings must be valid JSON.");
+    const parsedExtraSettings = serializeExtraSettingDrafts(extraSettings);
+    let resolvedBrokerCode = "";
+    if (vdn.trim()) {
+      const selectedEntry = findVdnDirectoryEntry(vdn, vdnDirectoryEntries);
+      if (!selectedEntry) {
+        setError("Select a VDN from the directory list.");
         return;
       }
+
+      resolvedBrokerCode = selectedEntry.brokerCode;
     }
     const referralSectionIds = new Set(
       (partner.sections ?? []).filter(isReferralSection).map((s) => s.id),
@@ -462,10 +484,10 @@ export default function PartnerEditDialog({
           },
         },
         settings:
-          vdn.trim() || brokerCode.trim() || parsedExtraSettings
+          vdn.trim() || resolvedBrokerCode || parsedExtraSettings
             ? {
                 vdn: vdn.trim() || undefined,
-                brokerCode: brokerCode.trim() || undefined,
+                brokerCode: resolvedBrokerCode || undefined,
                 extra: parsedExtraSettings,
               }
             : undefined,
@@ -573,22 +595,19 @@ export default function PartnerEditDialog({
           <p className="mt-2 text-xs text-muted-foreground">
             Optional payload values used by downstream integrations.
           </p>
-          <div className="mt-4 space-y-4">
-            <Input
-              value={vdn}
-              onChange={(e) => setVdn(e.target.value)}
-              placeholder="VDN"
-            />
-            <Input
-              value={brokerCode}
-              onChange={(e) => setBrokerCode(e.target.value)}
-              placeholder="Broker Code"
-            />
-            <Textarea
-              value={extraSettingsJson}
-              onChange={(e) => setExtraSettingsJson(e.target.value)}
-              placeholder='{"sourceSystem":"contactrequest-ui"}'
-              className="min-h-[120px] font-mono text-xs"
+          <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+            <AdminSettingsFields
+              vdn={vdn}
+              brokerCode={brokerCode}
+              vdnDirectoryEntries={vdnDirectoryEntries}
+              vdnDirectoryLoading={isVdnDirectoryLoading}
+              vdnDirectoryError={vdnDirectoryError}
+              extraSettings={extraSettings}
+              onVdnSelectionChange={(entry) => {
+                setVdn(entry?.vdnNo ?? "");
+                setBrokerCode(entry?.brokerCode ?? "");
+              }}
+              onExtraSettingsChange={setExtraSettings}
             />
           </div>
         </details>

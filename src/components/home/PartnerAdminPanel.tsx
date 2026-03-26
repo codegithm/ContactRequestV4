@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useLoading } from "@/components/loading-context";
@@ -45,12 +45,14 @@ import {
   defaultFooterLinksJson,
   springTransition,
 } from "@/components/home/home-page-constants";
+import { useVdnDirectory } from "@/hooks/useVdnDirectory";
 import { createPartnerConfigStore } from "@/lib/partner-config-store";
-import type {
-  PartnerConfig,
-  PartnerFooterLink,
-  PartnerSettingValue,
-} from "@/lib/partners";
+import type { PartnerConfig, PartnerFooterLink } from "@/lib/partners";
+import {
+  serializeExtraSettingDrafts,
+  type ExtraSettingDraft,
+} from "@/lib/partner-settings";
+import { findVdnDirectoryEntry } from "@/lib/vdn-directory";
 
 const store = createPartnerConfigStore();
 
@@ -121,7 +123,7 @@ export default function PartnerAdminPanel({ onSaved }: PartnerAdminPanelProps) {
   const [referralMaxEntries, setReferralMaxEntries] = useState("");
   const [vdn, setVdn] = useState("");
   const [brokerCode, setBrokerCode] = useState("");
-  const [extraSettingsJson, setExtraSettingsJson] = useState("");
+  const [extraSettings, setExtraSettings] = useState<ExtraSettingDraft[]>([]);
   const [footerLayout, setFooterLayout] = useState<
     "split" | "centered" | "links-only"
   >(defaultFooterLayout);
@@ -141,6 +143,11 @@ export default function PartnerAdminPanel({ onSaved }: PartnerAdminPanelProps) {
   const [newFieldSectionId, setNewFieldSectionId] = useState("");
   const [newFieldWidth, setNewFieldWidth] = useState<6 | 12>(6);
   const [newFieldRequired, setNewFieldRequired] = useState(false);
+  const {
+    entries: vdnDirectoryEntries,
+    isLoading: isVdnDirectoryLoading,
+    error: vdnDirectoryError,
+  } = useVdnDirectory();
 
   const availableFieldOptions = useMemo(
     () => getAvailableContactRequestFields(fields.map((field) => field.id)),
@@ -161,6 +168,20 @@ export default function PartnerAdminPanel({ onSaved }: PartnerAdminPanelProps) {
       })),
     [sections, fields],
   );
+
+  useEffect(() => {
+    if (!vdn.trim()) {
+      if (brokerCode) {
+        setBrokerCode("");
+      }
+      return;
+    }
+
+    const matchedEntry = findVdnDirectoryEntry(vdn, vdnDirectoryEntries);
+    if (matchedEntry && brokerCode !== matchedEntry.brokerCode) {
+      setBrokerCode(matchedEntry.brokerCode);
+    }
+  }, [brokerCode, vdn, vdnDirectoryEntries]);
 
   const resetForm = () => {
     setPartnerId("");
@@ -192,7 +213,7 @@ export default function PartnerAdminPanel({ onSaved }: PartnerAdminPanelProps) {
     setReferralMaxEntries("");
     setVdn("");
     setBrokerCode("");
-    setExtraSettingsJson("");
+    setExtraSettings([]);
     setFooterLayout(defaultFooterLayout);
     setFooterShowPoweredBy(true);
     setFooterPoweredByLabel(defaultFooterPoweredByLabel);
@@ -340,17 +361,17 @@ export default function PartnerAdminPanel({ onSaved }: PartnerAdminPanelProps) {
       return;
     }
 
-    let parsedExtraSettings: Record<string, PartnerSettingValue> | undefined;
-    if (extraSettingsJson.trim()) {
-      try {
-        parsedExtraSettings = JSON.parse(extraSettingsJson) as Record<
-          string,
-          PartnerSettingValue
-        >;
-      } catch {
-        setAdminError("Extra settings must be valid JSON.");
+    const parsedExtraSettings = serializeExtraSettingDrafts(extraSettings);
+
+    let resolvedBrokerCode = "";
+    if (vdn.trim()) {
+      const selectedEntry = findVdnDirectoryEntry(vdn, vdnDirectoryEntries);
+      if (!selectedEntry) {
+        setAdminError("Select a VDN from the directory list.");
         return;
       }
+
+      resolvedBrokerCode = selectedEntry.brokerCode;
     }
 
     let parsedFooterLinks: PartnerFooterLink[] | undefined;
@@ -437,10 +458,10 @@ export default function PartnerAdminPanel({ onSaved }: PartnerAdminPanelProps) {
         },
       },
       settings:
-        vdn.trim() || brokerCode.trim() || parsedExtraSettings
+        vdn.trim() || resolvedBrokerCode || parsedExtraSettings
           ? {
               vdn: vdn.trim() || undefined,
-              brokerCode: brokerCode.trim() || undefined,
+              brokerCode: resolvedBrokerCode || undefined,
               extra: parsedExtraSettings,
             }
           : undefined,
@@ -570,11 +591,16 @@ export default function PartnerAdminPanel({ onSaved }: PartnerAdminPanelProps) {
               <AdminSettingsFields
                 vdn={vdn}
                 brokerCode={brokerCode}
-                extraSettingsJson={extraSettingsJson}
+                vdnDirectoryEntries={vdnDirectoryEntries}
+                vdnDirectoryLoading={isVdnDirectoryLoading}
+                vdnDirectoryError={vdnDirectoryError}
+                extraSettings={extraSettings}
                 enableFeedback={enableFeedback}
-                onVdnChange={setVdn}
-                onBrokerCodeChange={setBrokerCode}
-                onExtraSettingsJsonChange={setExtraSettingsJson}
+                onVdnSelectionChange={(entry) => {
+                  setVdn(entry?.vdnNo ?? "");
+                  setBrokerCode(entry?.brokerCode ?? "");
+                }}
+                onExtraSettingsChange={setExtraSettings}
                 onEnableFeedbackChange={setEnableFeedback}
               />
             </div>
