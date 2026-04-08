@@ -4,7 +4,11 @@ export type {
   FeedbackSearchField,
 } from "@/models/form";
 export type { PartnerConfig } from "@/models/partner";
-export type { PartnerFooterLink, PartnerFooterConfig } from "@/models/footer";
+export type {
+  PartnerFooterLink,
+  PartnerFooterLogo,
+  PartnerFooterConfig,
+} from "@/models/footer";
 export type { PartnerSettings, PartnerSettingValue } from "@/models/settings";
 
 import type { PartnerConfig } from "@/models/partner";
@@ -463,6 +467,115 @@ const partnerRegistry: Record<string, PartnerConfig> = {
         },
       ],
       note: "FirstRand Bank Ltd (Reg. No. 1929/001225/06). An Authorised Financial Services and Credit Provider (NCRCP20).",
+    },
+  },
+  zapper: {
+    partnerId: "zapper",
+    partnerName: "Zapper",
+    logoUrl:
+      "https://www.zapper.com/wp-content/uploads/2023/08/Zapper-Logo.png",
+    bannerUrl:
+      "https://payfast.io/wp-content/uploads/2024/06/Zapper-2.png.webp",
+    attachBannerToFormTop: true,
+    headline: "Get in touch with Zapper",
+    description:
+      "Share your details and a Zapper consultant will contact you shortly.",
+    submitLabel: "Submit Request",
+    successMessage: "Thank you. Zapper will be in touch soon.",
+    settings: {
+      vdn: "ZPR001",
+      brokerCode: "ZAPPER-BROKER",
+    },
+    theme: {
+      primary: "160 96% 30%",
+      primaryForeground: "0 0% 100%",
+      radius: "10px",
+      radix: {
+        accentColor: "jade",
+        grayColor: "sage",
+        radius: "medium",
+        scaling: "100%",
+        panelBackground: "translucent",
+        appearance: "light",
+      },
+      pageBackground: "#ecfdf5",
+      headerBackground: "rgba(236,253,245,0.95)",
+      footerBackground: "rgba(220,252,231,0.94)",
+      cardBackground: "rgba(255,255,255,0.96)",
+      cardBorder: "rgba(5,150,105,0.24)",
+      headlineColor: "#065f46",
+      descriptionColor: "#047857",
+      badgeStyle: "soft",
+    },
+    feedback: true,
+    feedbackSearchFields: [
+      { id: "phone", label: "Phone Number", placeholder: "82 000 0000" },
+      {
+        id: "merchant_name",
+        label: "Merchant Name",
+        placeholder: "Enter merchant name",
+      },
+    ],
+    fields: [
+      {
+        id: "full_name",
+        type: "text",
+        label: "Full Name",
+        placeholder: "Jane Doe",
+        width: 12,
+        required: true,
+      },
+      {
+        id: "email",
+        type: "email",
+        label: "Email Address",
+        placeholder: "jane@example.com",
+        width: 6,
+        required: true,
+      },
+      {
+        id: "phone",
+        type: "tel",
+        label: "Phone Number",
+        placeholder: "82 000 0000",
+        width: 6,
+        required: true,
+        phoneFormat: "split",
+        areaCodePlaceholder: "+27",
+      },
+      {
+        id: "merchant_name",
+        type: "text",
+        label: "Merchant Name",
+        placeholder: "Your business name",
+        width: 6,
+        required: false,
+      },
+      {
+        id: "message",
+        type: "textarea",
+        label: "How can we help?",
+        placeholder: "Tell us about your enquiry",
+        width: 12,
+        required: false,
+      },
+    ],
+    footer: {
+      layout: "centered",
+      showPoweredBy: false,
+      links: [],
+      logos: [
+        {
+          label: "Auto & General",
+          logoUrl:
+            "https://www.fanews.co.za/images/cmsimages/big/auto-and-general-logo_news_22198_16419.jpg",
+        },
+        {
+          label: "Budget",
+          logoUrl:
+            "https://vmsautobody.co.za/wp-content/uploads/2023/10/Budget.png",
+        },
+      ],
     },
   },
 };

@@ -259,6 +259,17 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
     }
   };
 
+  const handleSendAnother = useCallback(() => {
+    setFormData({});
+    setRepeatableDrafts({});
+    setRepeatableEntries({});
+    setErrors({});
+    setSubmitError(null);
+    setTermsAccepted(false);
+    setTermsError(false);
+    setSubmitted(false);
+  }, []);
+
   return (
     <>
       <ProgressBar progress={submitted ? 100 : progress} />
@@ -427,6 +438,15 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
             <p className="text-muted-foreground max-w-md mx-auto">
               {config.successMessage || "Thank you! We'll be in touch soon."}
             </p>
+            <div className="pt-2">
+              <Button
+                type="button"
+                onClick={handleSendAnother}
+                className="btn-press"
+              >
+                Send Another
+              </Button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

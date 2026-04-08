@@ -43,11 +43,16 @@ import {
   defaultFooterLayout,
   defaultFooterPoweredByLabel,
   defaultFooterLinksJson,
+  defaultFooterLogosJson,
   springTransition,
 } from "@/components/home/home-page-constants";
 import { useVdnDirectory } from "@/hooks/useVdnDirectory";
 import { createPartnerConfigStore } from "@/lib/partner-config-store";
-import type { PartnerConfig, PartnerFooterLink } from "@/lib/partners";
+import type {
+  PartnerConfig,
+  PartnerFooterLink,
+  PartnerFooterLogo,
+} from "@/lib/partners";
 import {
   serializeExtraSettingDrafts,
   type ExtraSettingDraft,
@@ -69,6 +74,8 @@ export default function PartnerAdminPanel({ onSaved }: PartnerAdminPanelProps) {
   const [headline, setHeadline] = useState("");
   const [description, setDescription] = useState("");
   const [logoUrl, setLogoUrl] = useState("");
+  const [bannerUrl, setBannerUrl] = useState("");
+  const [attachBannerToFormTop, setAttachBannerToFormTop] = useState(false);
   const [themePrimary, setThemePrimary] = useState(defaultThemePrimary);
   const [themePrimaryForeground, setThemePrimaryForeground] = useState(
     defaultThemePrimaryForeground,
@@ -135,6 +142,9 @@ export default function PartnerAdminPanel({ onSaved }: PartnerAdminPanelProps) {
   const [footerLinksJson, setFooterLinksJson] = useState(
     defaultFooterLinksJson,
   );
+  const [footerLogosJson, setFooterLogosJson] = useState(
+    defaultFooterLogosJson,
+  );
   const [footerNote, setFooterNote] = useState("");
   const [sections, setSections] = useState<EditablePartnerSection[]>([]);
   const [fields, setFields] = useState<EditablePartnerField[]>([]);
@@ -189,6 +199,8 @@ export default function PartnerAdminPanel({ onSaved }: PartnerAdminPanelProps) {
     setHeadline("");
     setDescription("");
     setLogoUrl("");
+    setBannerUrl("");
+    setAttachBannerToFormTop(false);
     setThemePrimary(defaultThemePrimary);
     setThemePrimaryForeground(defaultThemePrimaryForeground);
     setThemeRadius(defaultThemeRadius);
@@ -219,6 +231,7 @@ export default function PartnerAdminPanel({ onSaved }: PartnerAdminPanelProps) {
     setFooterPoweredByLabel(defaultFooterPoweredByLabel);
     setFooterPoweredByUrl("");
     setFooterLinksJson(defaultFooterLinksJson);
+    setFooterLogosJson(defaultFooterLogosJson);
     setFooterNote("");
     setSections([]);
     setFields([]);
@@ -384,6 +397,16 @@ export default function PartnerAdminPanel({ onSaved }: PartnerAdminPanelProps) {
       }
     }
 
+    let parsedFooterLogos: PartnerFooterLogo[] | undefined;
+    if (footerLogosJson.trim()) {
+      try {
+        parsedFooterLogos = JSON.parse(footerLogosJson) as PartnerFooterLogo[];
+      } catch {
+        setAdminError("Footer logos must be valid JSON.");
+        return;
+      }
+    }
+
     const parsedMaxEntries = Number.parseInt(referralMaxEntries, 10);
     const maxEntries =
       Number.isFinite(parsedMaxEntries) && parsedMaxEntries > 0
@@ -413,6 +436,8 @@ export default function PartnerAdminPanel({ onSaved }: PartnerAdminPanelProps) {
       partnerId: partnerId.trim().toLowerCase(),
       partnerName: partnerName.trim(),
       logoUrl: logoUrl.trim() || undefined,
+      bannerUrl: bannerUrl.trim() || undefined,
+      attachBannerToFormTop,
       headline: headline.trim() || `Contact ${partnerName.trim()}`,
       description: description.trim() || undefined,
       submitLabel: "Submit Request",
@@ -475,6 +500,7 @@ export default function PartnerAdminPanel({ onSaved }: PartnerAdminPanelProps) {
           footerPoweredByLabel.trim() || defaultFooterPoweredByLabel,
         poweredByUrl: footerPoweredByUrl.trim() || undefined,
         links: parsedFooterLinks,
+        logos: parsedFooterLogos,
         note: footerNote.trim() || undefined,
       },
     };
@@ -534,15 +560,22 @@ export default function PartnerAdminPanel({ onSaved }: PartnerAdminPanelProps) {
             partnerId={partnerId}
             partnerName={partnerName}
             logoUrl={logoUrl}
+            bannerUrl={bannerUrl}
+            attachBannerToFormTop={attachBannerToFormTop}
             headline={headline}
             description={description}
             onPartnerIdChange={setPartnerId}
             onPartnerNameChange={setPartnerName}
             onLogoUrlChange={setLogoUrl}
+            onBannerUrlChange={setBannerUrl}
+            onAttachBannerToFormTopChange={setAttachBannerToFormTop}
             onHeadlineChange={setHeadline}
             onDescriptionChange={setDescription}
           />
           <AdminThemeFields
+            previewPartnerName={partnerName}
+            previewHeadline={headline}
+            previewDescription={description}
             themePrimary={themePrimary}
             themePrimaryForeground={themePrimaryForeground}
             themeRadius={themeRadius}
@@ -669,12 +702,14 @@ export default function PartnerAdminPanel({ onSaved }: PartnerAdminPanelProps) {
                 footerPoweredByLabel={footerPoweredByLabel}
                 footerPoweredByUrl={footerPoweredByUrl}
                 footerLinksJson={footerLinksJson}
+                footerLogosJson={footerLogosJson}
                 footerNote={footerNote}
                 onFooterLayoutChange={setFooterLayout}
                 onFooterShowPoweredByChange={setFooterShowPoweredBy}
                 onFooterPoweredByLabelChange={setFooterPoweredByLabel}
                 onFooterPoweredByUrlChange={setFooterPoweredByUrl}
                 onFooterLinksJsonChange={setFooterLinksJson}
+                onFooterLogosJsonChange={setFooterLogosJson}
                 onFooterNoteChange={setFooterNote}
               />
             </div>

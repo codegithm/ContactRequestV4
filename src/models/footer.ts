@@ -5,6 +5,13 @@ export interface PartnerFooterLink {
   type?: "privacy" | "terms" | "contact" | "custom";
 }
 
+export interface PartnerFooterLogo {
+  label: string;
+  logoUrl: string;
+  /** Optional target URL when clicking the logo */
+  url?: string;
+}
+
 export interface PartnerFooterConfig {
   /** Show the "Powered by" label. Default: true */
   showPoweredBy?: boolean;
@@ -14,6 +21,8 @@ export interface PartnerFooterConfig {
   poweredByUrl?: string;
   /** Footer nav links */
   links?: PartnerFooterLink[];
+  /** Partner logos rendered as a footer strip */
+  logos?: PartnerFooterLogo[];
   /**
    * split (default): powered-by left, links right
    * centered: everything centred

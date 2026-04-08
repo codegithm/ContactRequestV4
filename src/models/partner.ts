@@ -42,6 +42,9 @@ export interface PartnerConfig {
   partnerName: string;
   isActive?: boolean;
   logoUrl?: string;
+  bannerUrl?: string;
+  /** When true, render the company banner centered and attached to the top of the form card. */
+  attachBannerToFormTop?: boolean;
   theme: {
     /** HSL components, e.g. "210 100% 35%" */
     primary: string;

@@ -47,3 +47,4 @@ export const defaultFooterLayout = "split" as const;
 export const defaultFooterPoweredByLabel = "ContactRequest";
 export const defaultFooterLinksJson =
   '[{"label":"Privacy","type":"privacy"},{"label":"Terms","type":"terms"}]';
+export const defaultFooterLogosJson = "[]";

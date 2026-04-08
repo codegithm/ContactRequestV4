@@ -40,6 +40,10 @@ const PartnerShell = ({
 
   const maxWidth = variant === "feedback" ? "max-w-3xl" : "max-w-xl";
   const theme = config.theme;
+  const logoUrl = config.logoUrl?.trim();
+  const bannerUrl = config.bannerUrl?.trim();
+  const showFormTopBanner =
+    variant === "form" && !!bannerUrl && config.attachBannerToFormTop === true;
   const primary = toHslComponents(theme.primary, "220 14% 20%");
   const primaryForeground = toHslComponents(
     theme.primaryForeground,
@@ -121,14 +125,25 @@ const PartnerShell = ({
             className={`${maxWidth} mx-auto px-6 py-4 flex items-center justify-between`}
           >
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-md partner-brand-badge flex items-center justify-center">
-                <span className="text-brand-foreground text-sm font-bold">
-                  {config.partnerName.charAt(0)}
-                </span>
-              </div>
-              <span className="font-semibold text-foreground">
-                {config.partnerName}
-              </span>
+              {logoUrl ? (
+                <img
+                  src={logoUrl}
+                  alt={`${config.partnerName} logo`}
+                  className="h-8 w-auto max-w-[180px] object-contain"
+                  loading="lazy"
+                />
+              ) : (
+                <>
+                  <div className="w-8 h-8 rounded-md partner-brand-badge flex items-center justify-center">
+                    <span className="text-brand-foreground text-sm font-bold">
+                      {config.partnerName.charAt(0)}
+                    </span>
+                  </div>
+                  <span className="font-semibold text-foreground">
+                    {config.partnerName}
+                  </span>
+                </>
+              )}
             </div>
             <div className="flex items-center gap-3">
               {variant === "feedback" ? (
@@ -190,8 +205,18 @@ const PartnerShell = ({
               </div>
             )}
             {variant === "form" ? (
-              <div className="rounded-lg border p-6 form-container partner-card-surface">
-                {children}
+              <div className="rounded-lg border overflow-hidden partner-card-surface">
+                {showFormTopBanner && (
+                  <div
+                    className="border-b border-border/80 h-24 md:h-28 w-full bg-center bg-cover bg-no-repeat"
+                    style={{ backgroundImage: `url(${bannerUrl})` }}
+                    role="img"
+                    aria-label={`${config.partnerName} banner`}
+                  >
+                    <span className="sr-only">{`${config.partnerName} banner`}</span>
+                  </div>
+                )}
+                <div className="p-6 form-container">{children}</div>
               </div>
             ) : (
               children

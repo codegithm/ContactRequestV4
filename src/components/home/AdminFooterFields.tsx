@@ -8,12 +8,14 @@ interface AdminFooterFieldsProps {
   footerPoweredByLabel: string;
   footerPoweredByUrl: string;
   footerLinksJson: string;
+  footerLogosJson: string;
   footerNote: string;
   onFooterLayoutChange: (v: "split" | "centered" | "links-only") => void;
   onFooterShowPoweredByChange: (v: boolean) => void;
   onFooterPoweredByLabelChange: (v: string) => void;
   onFooterPoweredByUrlChange: (v: string) => void;
   onFooterLinksJsonChange: (v: string) => void;
+  onFooterLogosJsonChange: (v: string) => void;
   onFooterNoteChange: (v: string) => void;
 }
 
@@ -23,12 +25,14 @@ export default function AdminFooterFields({
   footerPoweredByLabel,
   footerPoweredByUrl,
   footerLinksJson,
+  footerLogosJson,
   footerNote,
   onFooterLayoutChange,
   onFooterShowPoweredByChange,
   onFooterPoweredByLabelChange,
   onFooterPoweredByUrlChange,
   onFooterLinksJsonChange,
+  onFooterLogosJsonChange,
   onFooterNoteChange,
 }: AdminFooterFieldsProps) {
   return (
@@ -98,6 +102,24 @@ export default function AdminFooterFields({
           <code className="font-mono">&#123;"label","url"?,"type"?&#125;</code>.
           Types:{" "}
           <code className="font-mono">privacy | terms | contact | custom</code>.
+        </p>
+      </div>
+
+      <div className="space-y-2 md:col-span-2">
+        <Label htmlFor="footerLogosJson">Footer logos JSON (optional)</Label>
+        <Textarea
+          id="footerLogosJson"
+          value={footerLogosJson}
+          onChange={(e) => onFooterLogosJsonChange(e.target.value)}
+          placeholder='[{"label":"Absa","logoUrl":"https://cdn.example.com/absa.svg","url":"https://absa.co.za"}]'
+          className="min-h-[80px] font-mono text-xs"
+        />
+        <p className="text-[11px] text-muted-foreground">
+          Each item:{" "}
+          <code className="font-mono">
+            &#123;"label","logoUrl","url"?&#125;
+          </code>
+          . Logos are rendered in the footer as a responsive strip.
         </p>
       </div>
 

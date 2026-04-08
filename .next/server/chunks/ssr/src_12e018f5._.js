@@ -2452,218 +2452,663 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/input.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/label.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/home/ColorPicker.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$palette$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Palette$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/palette.js [app-ssr] (ecmascript) <export default as Palette>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$panels$2d$top$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Layout$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/panels-top-left.js [app-ssr] (ecmascript) <export default as Layout>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$type$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Type$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/type.js [app-ssr] (ecmascript) <export default as Type>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sliders$2d$horizontal$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__SlidersHorizontal$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/sliders-horizontal.js [app-ssr] (ecmascript) <export default as SlidersHorizontal>");
 ;
 ;
 ;
 ;
-function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, themePageBackground, themeHeaderBackground, themeFooterBackground, themeCardBackground, themeCardBorder, themeHeadlineColor, themeDescriptionColor, themeBodyTextColor, themeBadgeStyle, radixAccentColor, radixGrayColor, radixRadius, radixScaling, radixPanelBackground, radixAppearance, onThemePrimaryChange, onThemePrimaryForegroundChange, onThemeRadiusChange, onThemePageBackgroundChange, onThemeHeaderBackgroundChange, onThemeFooterBackgroundChange, onThemeCardBackgroundChange, onThemeCardBorderChange, onThemeHeadlineColorChange, onThemeDescriptionColorChange, onThemeBodyTextColorChange, onThemeBadgeStyleChange, onRadixAccentColorChange, onRadixGrayColorChange, onRadixRadiusChange, onRadixScalingChange, onRadixPanelBackgroundChange, onRadixAppearanceChange }) {
-    const previewPrimary = `hsl(${themePrimary || "220 14% 20%"})`;
-    const previewPrimaryForeground = `hsl(${themePrimaryForeground || "0 0% 100%"})`;
-    const previewPageBackground = themePageBackground || "#f8fafc";
-    const previewHeaderBackground = themeHeaderBackground || "#ffffff";
-    const previewFooterBackground = themeFooterBackground || "#ffffff";
-    const previewCardBackground = themeCardBackground || "#ffffff";
-    const previewCardBorder = themeCardBorder || "rgba(15, 23, 42, 0.12)";
-    const previewHeadlineColor = themeHeadlineColor || "#0f172a";
-    const previewDescriptionColor = themeDescriptionColor || "#475569";
-    const previewBodyTextColor = themeBodyTextColor || "#0f172a";
+;
+function AdminThemeFields({ previewPartnerName, previewHeadline, previewDescription, themePrimary, themePrimaryForeground, themeRadius, themePageBackground, themeHeaderBackground, themeFooterBackground, themeCardBackground, themeCardBorder, themeHeadlineColor, themeDescriptionColor, themeBodyTextColor, themeBadgeStyle, radixAccentColor, radixGrayColor, radixRadius, radixScaling, radixPanelBackground, radixAppearance, onThemePrimaryChange, onThemePrimaryForegroundChange, onThemeRadiusChange, onThemePageBackgroundChange, onThemeHeaderBackgroundChange, onThemeFooterBackgroundChange, onThemeCardBackgroundChange, onThemeCardBorderChange, onThemeHeadlineColorChange, onThemeDescriptionColorChange, onThemeBodyTextColorChange, onThemeBadgeStyleChange, onRadixAccentColorChange, onRadixGrayColorChange, onRadixRadiusChange, onRadixScalingChange, onRadixPanelBackgroundChange, onRadixAppearanceChange }) {
+    const displayName = previewPartnerName?.trim() || "Partner Preview";
+    const displayInitial = displayName.charAt(0).toUpperCase();
+    const displayHeadline = previewHeadline?.trim() || `Contact ${displayName}`;
+    const displayDescription = previewDescription?.trim() || "Fill in your details and we'll be in touch shortly.";
+    const pPrimary = `hsl(${themePrimary || "220 14% 20%"})`;
+    const pPrimaryFg = `hsl(${themePrimaryForeground || "0 0% 100%"})`;
+    const pPageBg = themePageBackground || "#f8fafc";
+    const pHeaderBg = themeHeaderBackground || "rgba(255,255,255,0.92)";
+    const pFooterBg = themeFooterBackground || "rgba(255,255,255,0.9)";
+    const pCardBg = themeCardBackground || "rgba(255,255,255,0.95)";
+    const pCardBorder = themeCardBorder || "rgba(15,23,42,0.1)";
+    const pHeadline = themeHeadlineColor || "#0f172a";
+    const pDesc = themeDescriptionColor || "#475569";
+    const pBody = themeBodyTextColor || "#0f172a";
+    const pRadius = themeRadius || "8px";
+    const badgeBg = themeBadgeStyle === "solid" ? pPrimary : `color-mix(in srgb, ${pPrimary} 15%, white)`;
+    const badgeFg = themeBadgeStyle === "solid" ? pPrimaryFg : pPrimary;
+    const badgeBorder = themeBadgeStyle === "soft" ? `1px solid ${pPrimary}` : "1px solid transparent";
+    const selectClass = "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm";
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "space-y-2 md:col-span-2 rounded-md border border-border bg-muted/20 p-3",
+                className: "md:col-span-2 rounded-lg border border-border overflow-hidden shadow-sm",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-sm font-semibold text-foreground",
-                        children: "Theme Impact Preview"
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                        lineNumber: 96,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-xs text-muted-foreground",
-                        children: "Changes here affect visuals only and are not saved until you click save."
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                        lineNumber: 99,
-                        columnNumber: 9
-                    }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "rounded-md border p-3 space-y-2",
-                        style: {
-                            background: previewPageBackground,
-                            borderColor: previewCardBorder,
-                            borderRadius: themeRadius || "8px"
-                        },
+                        className: "flex items-center justify-between gap-2 px-3 py-2 bg-muted/60 border-b border-border",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "rounded px-3 py-2 text-xs",
-                                style: {
-                                    background: previewHeaderBackground,
-                                    color: previewBodyTextColor
-                                },
-                                children: "Header surface"
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-xs font-semibold text-foreground",
+                                children: "Live Theme Preview"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                lineNumber: 111,
+                                lineNumber: 128,
                                 columnNumber: 11
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "rounded border px-3 py-3",
-                                style: {
-                                    background: previewCardBackground,
-                                    borderColor: previewCardBorder,
-                                    borderRadius: themeRadius || "8px"
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center justify-between gap-2",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-xs",
-                                                style: {
-                                                    color: previewBodyTextColor
-                                                },
-                                                children: "Card surface"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 129,
-                                                columnNumber: 15
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "inline-flex items-center rounded px-2 py-1 text-[11px] font-medium",
-                                                style: {
-                                                    background: themeBadgeStyle === "solid" ? previewPrimary : "color-mix(in srgb, " + previewPrimary + " 15%, white)",
-                                                    color: themeBadgeStyle === "solid" ? previewPrimaryForeground : previewPrimary,
-                                                    border: themeBadgeStyle === "soft" ? `1px solid ${previewPrimary}` : "1px solid transparent"
-                                                },
-                                                children: themeBadgeStyle === "solid" ? "Solid badge" : "Soft badge"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 132,
-                                                columnNumber: 15
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                        lineNumber: 128,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "mt-2 text-sm font-semibold",
-                                        style: {
-                                            color: previewHeadlineColor
-                                        },
-                                        children: "Header text preview"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                        lineNumber: 152,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-xs",
-                                        style: {
-                                            color: previewDescriptionColor
-                                        },
-                                        children: "Description text preview for helper copy and subtitles."
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                        lineNumber: 158,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        type: "button",
-                                        className: "mt-3 rounded px-3 py-1.5 text-xs font-medium",
-                                        style: {
-                                            background: previewPrimary,
-                                            color: previewPrimaryForeground,
-                                            borderRadius: themeRadius || "8px"
-                                        },
-                                        children: "Primary action"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                        lineNumber: 161,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                lineNumber: 120,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "rounded px-3 py-2 text-xs",
-                                style: {
-                                    background: previewFooterBackground,
-                                    color: previewBodyTextColor
-                                },
-                                children: "Footer surface"
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-[11px] text-muted-foreground",
+                                children: "Updates as you change settings below"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                lineNumber: 173,
+                                lineNumber: 131,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                        lineNumber: 103,
+                        lineNumber: 127,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            background: pPageBg
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    background: pHeaderBg,
+                                    borderBottom: `1px solid ${pCardBorder}`
+                                },
+                                className: "px-4 py-2.5 flex items-center justify-between",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-center gap-2",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    background: pPrimary,
+                                                    borderRadius: pRadius,
+                                                    width: 24,
+                                                    height: 24,
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    justifyContent: "center",
+                                                    flexShrink: 0
+                                                },
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    style: {
+                                                        color: pPrimaryFg,
+                                                        fontSize: 10,
+                                                        fontWeight: 700,
+                                                        lineHeight: 1
+                                                    },
+                                                    children: displayInitial
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                    lineNumber: 159,
+                                                    columnNumber: 17
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                lineNumber: 147,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                style: {
+                                                    color: pBody,
+                                                    fontSize: 11,
+                                                    fontWeight: 600
+                                                },
+                                                children: displayName
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                lineNumber: 170,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 146,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-center gap-2",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                style: {
+                                                    background: badgeBg,
+                                                    color: badgeFg,
+                                                    border: badgeBorder,
+                                                    borderRadius: pRadius,
+                                                    fontSize: 9,
+                                                    fontWeight: 500,
+                                                    padding: "2px 8px"
+                                                },
+                                                children: "Feedback"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                lineNumber: 181,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                style: {
+                                                    color: pDesc,
+                                                    fontSize: 9
+                                                },
+                                                children: "🔒 Secure"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                lineNumber: 194,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 180,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 139,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    padding: "16px"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            marginBottom: 12
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                style: {
+                                                    color: pHeadline,
+                                                    fontSize: 14,
+                                                    fontWeight: 600,
+                                                    marginBottom: 3,
+                                                    lineHeight: 1.3
+                                                },
+                                                children: displayHeadline
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                lineNumber: 202,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                style: {
+                                                    color: pDesc,
+                                                    fontSize: 10,
+                                                    lineHeight: 1.5
+                                                },
+                                                children: displayDescription
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                lineNumber: 213,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 201,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            background: pCardBg,
+                                            border: `1px solid ${pCardBorder}`,
+                                            borderRadius: pRadius,
+                                            padding: "12px 14px 14px"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    marginBottom: 8
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            color: pBody,
+                                                            fontSize: 9,
+                                                            fontWeight: 500,
+                                                            marginBottom: 3
+                                                        },
+                                                        children: "Full Name"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                        lineNumber: 235,
+                                                        columnNumber: 17
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            border: `1px solid ${pCardBorder}`,
+                                                            borderRadius: pRadius,
+                                                            height: 22,
+                                                            background: "rgba(255,255,255,0.55)",
+                                                            padding: "0 7px",
+                                                            display: "flex",
+                                                            alignItems: "center"
+                                                        },
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            style: {
+                                                                color: pDesc,
+                                                                fontSize: 9
+                                                            },
+                                                            children: "e.g. John Smith"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                            lineNumber: 256,
+                                                            columnNumber: 19
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                        lineNumber: 245,
+                                                        columnNumber: 17
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                lineNumber: 234,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    marginBottom: 11
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            color: pBody,
+                                                            fontSize: 9,
+                                                            fontWeight: 500,
+                                                            marginBottom: 3
+                                                        },
+                                                        children: "Phone Number"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                        lineNumber: 264,
+                                                        columnNumber: 17
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            border: `1px solid ${pCardBorder}`,
+                                                            borderRadius: pRadius,
+                                                            height: 22,
+                                                            background: "rgba(255,255,255,0.55)",
+                                                            padding: "0 7px",
+                                                            display: "flex",
+                                                            alignItems: "center"
+                                                        },
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            style: {
+                                                                color: pDesc,
+                                                                fontSize: 9
+                                                            },
+                                                            children: "+27 ..."
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                            lineNumber: 285,
+                                                            columnNumber: 19
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                        lineNumber: 274,
+                                                        columnNumber: 17
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                lineNumber: 263,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                type: "button",
+                                                style: {
+                                                    background: pPrimary,
+                                                    color: pPrimaryFg,
+                                                    borderRadius: pRadius,
+                                                    border: "none",
+                                                    width: "100%",
+                                                    padding: "6px 0",
+                                                    fontSize: 10,
+                                                    fontWeight: 500,
+                                                    cursor: "default"
+                                                },
+                                                children: "Submit Request"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                lineNumber: 290,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 225,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 199,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                style: {
+                                    background: pFooterBg,
+                                    borderTop: `1px solid ${pCardBorder}`,
+                                    padding: "7px 16px",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "space-between"
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        style: {
+                                            color: pDesc,
+                                            fontSize: 9
+                                        },
+                                        children: [
+                                            "Powered by",
+                                            " ",
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                style: {
+                                                    color: pBody,
+                                                    fontWeight: 600
+                                                },
+                                                children: "ContactRequest"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                lineNumber: 322,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 320,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            display: "flex",
+                                            gap: 10
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                style: {
+                                                    color: pDesc,
+                                                    fontSize: 9
+                                                },
+                                                children: "Privacy"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                lineNumber: 327,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                style: {
+                                                    color: pDesc,
+                                                    fontSize: 9
+                                                },
+                                                children: "Terms"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                lineNumber: 328,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 326,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 310,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                        lineNumber: 137,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "px-3 py-2 bg-muted/40 border-t border-border",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-[10px] font-medium text-muted-foreground mb-1.5",
+                                children: "What you see above:"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 335,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex flex-wrap gap-x-4 gap-y-1",
+                                children: [
+                                    [
+                                        pPrimary,
+                                        "Brand / button / badge"
+                                    ],
+                                    [
+                                        pPageBg,
+                                        "Page background"
+                                    ],
+                                    [
+                                        pHeaderBg,
+                                        "Header surface"
+                                    ],
+                                    [
+                                        pCardBg,
+                                        "Form card"
+                                    ],
+                                    [
+                                        pFooterBg,
+                                        "Footer surface"
+                                    ],
+                                    [
+                                        pHeadline,
+                                        "Headline text"
+                                    ],
+                                    [
+                                        pDesc,
+                                        "Description & helper text"
+                                    ],
+                                    [
+                                        pBody,
+                                        "Body text"
+                                    ]
+                                ].map(([color, label])=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-center gap-1.5",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "w-3 h-3 rounded-sm border border-border/60 flex-shrink-0",
+                                                style: {
+                                                    background: color
+                                                }
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                lineNumber: 352,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-[10px] text-muted-foreground",
+                                                children: label
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                                lineNumber: 356,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, label, true, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 351,
+                                        columnNumber: 15
+                                    }, this))
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 338,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                        lineNumber: 334,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 95,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["HslColorField"], {
-                id: "themePrimary",
-                label: "Theme Primary (HSL components)",
-                value: themePrimary,
-                placeholder: "210 100% 35%",
-                fallbackHex: "#1d4ed8",
-                onChange: onThemePrimaryChange
-            }, void 0, false, {
-                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 185,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-[11px] text-muted-foreground -mt-1",
-                children: "Affects buttons, active controls, and key highlights."
-            }, void 0, false, {
-                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 193,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["HslColorField"], {
-                id: "themePrimaryForeground",
-                label: "Primary Foreground (HSL components)",
-                value: themePrimaryForeground,
-                placeholder: "0 0% 100%",
-                fallbackHex: "#ffffff",
-                onChange: onThemePrimaryForegroundChange
-            }, void 0, false, {
-                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 196,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-[11px] text-muted-foreground -mt-1",
-                children: "Text/icon color shown on top of the primary color."
-            }, void 0, false, {
-                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 204,
+                lineNumber: 125,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "space-y-2",
+                className: "md:col-span-2 rounded-lg border border-border bg-muted/20 p-4 space-y-4",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
-                        htmlFor: "themeRadius",
-                        children: "Theme Radius"
-                    }, void 0, false, {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex items-center gap-2 mb-0.5",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$palette$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Palette$3e$__["Palette"], {
+                                        className: "w-3.5 h-3.5 text-muted-foreground"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 369,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                        className: "text-sm font-semibold text-foreground",
+                                        children: "Brand Colors"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 370,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 368,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-[11px] text-muted-foreground",
+                                children: "The primary color drives buttons, the brand badge, and interactive highlights. The foreground color is the text/icon drawn on top of it."
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 374,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                        lineNumber: 208,
+                        lineNumber: 367,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "grid grid-cols-1 md:grid-cols-2 gap-4",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "space-y-1",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["HslColorField"], {
+                                        id: "themePrimary",
+                                        label: "Primary Color",
+                                        value: themePrimary,
+                                        placeholder: "210 100% 35%",
+                                        fallbackHex: "#1d4ed8",
+                                        onChange: onThemePrimaryChange
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 382,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-[11px] text-muted-foreground",
+                                        children: "Buttons, brand badge background, interactive highlights."
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 390,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 381,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "space-y-1",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["HslColorField"], {
+                                        id: "themePrimaryForeground",
+                                        label: "Primary Foreground",
+                                        value: themePrimaryForeground,
+                                        placeholder: "0 0% 100%",
+                                        fallbackHex: "#ffffff",
+                                        onChange: onThemePrimaryForegroundChange
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 395,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-[11px] text-muted-foreground",
+                                        children: "Text and icons rendered on top of the primary color (e.g. button label)."
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 403,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 394,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                        lineNumber: 380,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                lineNumber: 366,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "space-y-1",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex items-center gap-1.5 mb-1",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$panels$2d$top$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Layout$3e$__["Layout"], {
+                                className: "w-3.5 h-3.5 text-muted-foreground"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 414,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
+                                htmlFor: "themeRadius",
+                                className: "text-sm font-semibold",
+                                children: "Border Radius"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 415,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                        lineNumber: 413,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -2673,194 +3118,507 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                         placeholder: "8px"
                     }, void 0, false, {
                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                        lineNumber: 209,
+                        lineNumber: 419,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "text-[11px] text-muted-foreground",
-                        children: "Controls how rounded cards, buttons, and inputs appear."
-                    }, void 0, false, {
+                        children: [
+                            "Controls roundness for cards, buttons, inputs, and the brand badge (e.g. ",
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("code", {
+                                children: "4px"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 427,
+                                columnNumber: 17
+                            }, this),
+                            ", ",
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("code", {
+                                children: "12px"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 427,
+                                columnNumber: 35
+                            }, this),
+                            ", ",
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("code", {
+                                children: "0.5rem"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 427,
+                                columnNumber: 54
+                            }, this),
+                            ")."
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                        lineNumber: 215,
+                        lineNumber: 425,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 207,
+                lineNumber: 412,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "space-y-2",
+                className: "space-y-1",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
                         htmlFor: "themeBadgeStyle",
-                        children: "Badge Style"
+                        className: "text-sm font-semibold",
+                        children: "Badge / Chip Style"
                     }, void 0, false, {
                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                        lineNumber: 220,
+                        lineNumber: 432,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                         id: "themeBadgeStyle",
                         value: themeBadgeStyle,
                         onChange: (e)=>onThemeBadgeStyleChange(e.target.value),
-                        className: "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm",
+                        className: selectClass,
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                 value: "soft",
-                                children: "Soft"
+                                children: "Soft – lightly tinted with a border"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                lineNumber: 229,
+                                lineNumber: 443,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                 value: "solid",
-                                children: "Solid"
+                                children: "Solid – fully filled with primary color"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                lineNumber: 230,
+                                lineNumber: 444,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                        lineNumber: 221,
+                        lineNumber: 435,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "text-[11px] text-muted-foreground",
-                        children: "Soft uses light tinted badges; solid uses full primary color."
+                        children: "Affects the Feedback chip in the header and status badges."
                     }, void 0, false, {
                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                        lineNumber: 232,
+                        lineNumber: 446,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 219,
+                lineNumber: 431,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("details", {
-                className: "md:col-span-2 rounded-md border border-border bg-muted/20 p-3",
+                className: "md:col-span-2 rounded-lg border border-border bg-muted/20 p-4",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("summary", {
-                        className: "cursor-pointer text-sm font-medium text-foreground",
-                        children: "Text Colors"
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                        lineNumber: 237,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "mt-2 text-[11px] text-muted-foreground",
-                        children: "Control headline, description, and general text color across the partner page."
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                        lineNumber: 240,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "mt-3 grid grid-cols-1 md:grid-cols-2 gap-4",
+                        className: "cursor-pointer flex items-center gap-2 text-sm font-semibold text-foreground list-none [&::-webkit-details-marker]:hidden",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ColorField"], {
-                                id: "themeHeadlineColor",
-                                label: "Headline Text Color",
-                                value: themeHeadlineColor,
-                                placeholder: "#0f172a",
-                                fallbackHex: "#0f172a",
-                                onChange: onThemeHeadlineColorChange,
-                                colSpan2: false
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sliders$2d$horizontal$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__SlidersHorizontal$3e$__["SlidersHorizontal"], {
+                                className: "w-3.5 h-3.5 text-muted-foreground"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                lineNumber: 245,
+                                lineNumber: 454,
                                 columnNumber: 11
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ColorField"], {
-                                id: "themeDescriptionColor",
-                                label: "Description Text Color",
-                                value: themeDescriptionColor,
-                                placeholder: "#475569",
-                                fallbackHex: "#475569",
-                                onChange: onThemeDescriptionColorChange,
-                                colSpan2: false
+                            "Surface Colors",
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "ml-auto text-[11px] font-normal text-muted-foreground",
+                                children: "Click to expand"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                lineNumber: 254,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ColorField"], {
-                                id: "themeBodyTextColor",
-                                label: "Body Text Color",
-                                value: themeBodyTextColor,
-                                placeholder: "#0f172a",
-                                fallbackHex: "#0f172a",
-                                onChange: onThemeBodyTextColorChange,
-                                colSpan2: false
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                lineNumber: 263,
+                                lineNumber: 456,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                        lineNumber: 244,
+                        lineNumber: 453,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "mt-2 text-[11px] text-muted-foreground",
+                        children: "Controls the background of each major zone: the outer page canvas, header bar, footer bar, and the form card."
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                        lineNumber: 460,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "mt-4 grid grid-cols-1 md:grid-cols-2 gap-4",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "space-y-1",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ColorField"], {
+                                        id: "themePageBackground",
+                                        label: "Page Background",
+                                        value: themePageBackground,
+                                        placeholder: "#f8fafc",
+                                        fallbackHex: "#f8fafc",
+                                        onChange: onThemePageBackgroundChange,
+                                        colSpan2: false
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 466,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-[11px] text-muted-foreground",
+                                        children: "The full-page canvas visible behind all content."
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 475,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 465,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "space-y-1",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ColorField"], {
+                                        id: "themeHeaderBackground",
+                                        label: "Header Background",
+                                        value: themeHeaderBackground,
+                                        placeholder: "#ffffff",
+                                        fallbackHex: "#ffffff",
+                                        onChange: onThemeHeaderBackgroundChange,
+                                        colSpan2: false
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 480,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-[11px] text-muted-foreground",
+                                        children: "Top navigation bar with the brand badge and partner name."
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 489,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 479,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "space-y-1",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ColorField"], {
+                                        id: "themeCardBackground",
+                                        label: "Form Card Background",
+                                        value: themeCardBackground,
+                                        placeholder: "#ffffff",
+                                        fallbackHex: "#ffffff",
+                                        onChange: onThemeCardBackgroundChange,
+                                        colSpan2: false
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 494,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-[11px] text-muted-foreground",
+                                        children: "The surface of the form container card."
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 503,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 493,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "space-y-1",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ColorField"], {
+                                        id: "themeCardBorder",
+                                        label: "Card Border Color",
+                                        value: themeCardBorder,
+                                        placeholder: "rgba(15,23,42,0.1)",
+                                        fallbackHex: "#0f172a",
+                                        onChange: onThemeCardBorderChange,
+                                        colSpan2: false
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 508,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-[11px] text-muted-foreground",
+                                        children: "Border used on the form card, dividers, and input outlines."
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 517,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 507,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "space-y-1",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ColorField"], {
+                                        id: "themeFooterBackground",
+                                        label: "Footer Background",
+                                        value: themeFooterBackground,
+                                        placeholder: "#ffffff",
+                                        fallbackHex: "#ffffff",
+                                        onChange: onThemeFooterBackgroundChange,
+                                        colSpan2: false
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 522,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-[11px] text-muted-foreground",
+                                        children: 'Bottom strip with the "Powered by" text and policy links.'
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 531,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 521,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                        lineNumber: 464,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 236,
+                lineNumber: 452,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("details", {
-                className: "md:col-span-2 rounded-md border border-border bg-muted/20 p-3",
+                className: "md:col-span-2 rounded-lg border border-border bg-muted/20 p-4",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("summary", {
-                        className: "cursor-pointer text-sm font-medium text-foreground",
-                        children: "Advanced Radix Theme Options"
-                    }, void 0, false, {
+                        className: "cursor-pointer flex items-center gap-2 text-sm font-semibold text-foreground list-none [&::-webkit-details-marker]:hidden",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$type$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Type$3e$__["Type"], {
+                                className: "w-3.5 h-3.5 text-muted-foreground"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 541,
+                                columnNumber: 11
+                            }, this),
+                            "Text Colors",
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "ml-auto text-[11px] font-normal text-muted-foreground",
+                                children: "Click to expand"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 543,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                        lineNumber: 276,
+                        lineNumber: 540,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "mt-2 text-[11px] text-muted-foreground",
-                        children: "Optional fine-tuning for Radix component tokens."
+                        children: "Controls the three text layers: large page titles, descriptive subtitles, and general body copy."
                     }, void 0, false, {
                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                        lineNumber: 279,
+                        lineNumber: 547,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "mt-3 grid grid-cols-1 md:grid-cols-2 gap-4",
+                        className: "mt-4 grid grid-cols-1 md:grid-cols-2 gap-4",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "space-y-1",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ColorField"], {
+                                        id: "themeHeadlineColor",
+                                        label: "Headline Color",
+                                        value: themeHeadlineColor,
+                                        placeholder: "#0f172a",
+                                        fallbackHex: "#0f172a",
+                                        onChange: onThemeHeadlineColorChange,
+                                        colSpan2: false
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 553,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-[11px] text-muted-foreground",
+                                        children: 'Large page title (e.g. "Contact Acme Corp").'
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 562,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 552,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "space-y-1",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ColorField"], {
+                                        id: "themeDescriptionColor",
+                                        label: "Description Color",
+                                        value: themeDescriptionColor,
+                                        placeholder: "#475569",
+                                        fallbackHex: "#475569",
+                                        onChange: onThemeDescriptionColorChange,
+                                        colSpan2: false
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 567,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-[11px] text-muted-foreground",
+                                        children: "Subtitle text, helper copy, and muted labels."
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 576,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 566,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "space-y-1",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ColorField"], {
+                                        id: "themeBodyTextColor",
+                                        label: "Body Text Color",
+                                        value: themeBodyTextColor,
+                                        placeholder: "#0f172a",
+                                        fallbackHex: "#0f172a",
+                                        onChange: onThemeBodyTextColorChange,
+                                        colSpan2: false
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 581,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-[11px] text-muted-foreground",
+                                        children: "General content text and field labels."
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                        lineNumber: 590,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 580,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                        lineNumber: 551,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                lineNumber: 539,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("details", {
+                className: "md:col-span-2 rounded-lg border border-border bg-muted/20 p-4",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("summary", {
+                        className: "cursor-pointer flex items-center gap-2 text-sm font-semibold text-foreground list-none [&::-webkit-details-marker]:hidden",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sliders$2d$horizontal$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__SlidersHorizontal$3e$__["SlidersHorizontal"], {
+                                className: "w-3.5 h-3.5 text-muted-foreground"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 600,
+                                columnNumber: 11
+                            }, this),
+                            "Advanced Radix Theme Options",
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "ml-auto text-[11px] font-normal text-muted-foreground",
+                                children: "Click to expand"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                                lineNumber: 602,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                        lineNumber: 599,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "mt-2 text-[11px] text-muted-foreground",
+                        children: "Fine-tune the underlying Radix UI theme tokens. These affect semantic component colours and spacing that sit beneath the custom overrides above."
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/home/AdminThemeFields.tsx",
+                        lineNumber: 606,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "mt-4 grid grid-cols-1 md:grid-cols-2 gap-4",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "space-y-2",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
                                         htmlFor: "radixAccentColor",
-                                        children: "Radix Accent Color"
+                                        children: "Accent Color"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                        lineNumber: 284,
+                                        lineNumber: 613,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                         id: "radixAccentColor",
                                         value: radixAccentColor,
                                         onChange: (e)=>onRadixAccentColorChange(e.target.value),
-                                        className: "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm",
+                                        className: selectClass,
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                 value: "blue",
                                                 children: "Blue"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 291,
+                                                lineNumber: 620,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2868,7 +3626,7 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Crimson"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 292,
+                                                lineNumber: 621,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2876,7 +3634,7 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Green"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 293,
+                                                lineNumber: 622,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2884,7 +3642,7 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Amber"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 294,
+                                                lineNumber: 623,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2892,7 +3650,7 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Violet"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 295,
+                                                lineNumber: 624,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2900,7 +3658,7 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Teal"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 296,
+                                                lineNumber: 625,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2908,7 +3666,7 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Orange"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 297,
+                                                lineNumber: 626,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2916,7 +3674,7 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Red"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 298,
+                                                lineNumber: 627,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2924,7 +3682,7 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Indigo"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 299,
+                                                lineNumber: 628,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2932,19 +3690,19 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Mint"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 300,
+                                                lineNumber: 629,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                        lineNumber: 285,
+                                        lineNumber: 614,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                lineNumber: 283,
+                                lineNumber: 612,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2952,24 +3710,24 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
                                         htmlFor: "radixGrayColor",
-                                        children: "Radix Gray Color"
+                                        children: "Gray Scale"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                        lineNumber: 304,
+                                        lineNumber: 633,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                         id: "radixGrayColor",
                                         value: radixGrayColor,
                                         onChange: (e)=>onRadixGrayColorChange(e.target.value),
-                                        className: "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm",
+                                        className: selectClass,
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                 value: "slate",
                                                 children: "Slate"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 311,
+                                                lineNumber: 640,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2977,7 +3735,7 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Mauve"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 312,
+                                                lineNumber: 641,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2985,7 +3743,7 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Sage"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 313,
+                                                lineNumber: 642,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2993,7 +3751,7 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Olive"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 314,
+                                                lineNumber: 643,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3001,7 +3759,7 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Sand"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 315,
+                                                lineNumber: 644,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3009,7 +3767,7 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Gray"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 316,
+                                                lineNumber: 645,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3017,19 +3775,19 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Auto"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 317,
+                                                lineNumber: 646,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                        lineNumber: 305,
+                                        lineNumber: 634,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                lineNumber: 303,
+                                lineNumber: 632,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3037,24 +3795,24 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
                                         htmlFor: "radixRadius",
-                                        children: "Radix Radius"
+                                        children: "Component Radius"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                        lineNumber: 321,
+                                        lineNumber: 650,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                         id: "radixRadius",
                                         value: radixRadius,
                                         onChange: (e)=>onRadixRadiusChange(e.target.value),
-                                        className: "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm",
+                                        className: selectClass,
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                 value: "none",
-                                                children: "None"
+                                                children: "None – sharp corners"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 328,
+                                                lineNumber: 657,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3062,7 +3820,7 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Small"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 329,
+                                                lineNumber: 658,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3070,7 +3828,7 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Medium"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 330,
+                                                lineNumber: 659,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3078,27 +3836,27 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Large"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 331,
+                                                lineNumber: 660,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                 value: "full",
-                                                children: "Full"
+                                                children: "Full – pill shapes"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 332,
+                                                lineNumber: 661,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                        lineNumber: 322,
+                                        lineNumber: 651,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                lineNumber: 320,
+                                lineNumber: 649,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3106,24 +3864,24 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
                                         htmlFor: "radixScaling",
-                                        children: "Radix Scaling"
+                                        children: "UI Scaling"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                        lineNumber: 336,
+                                        lineNumber: 665,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                         id: "radixScaling",
                                         value: radixScaling,
                                         onChange: (e)=>onRadixScalingChange(e.target.value),
-                                        className: "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm",
+                                        className: selectClass,
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                 value: "90%",
-                                                children: "90%"
+                                                children: "90% – compact"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 343,
+                                                lineNumber: 672,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3131,15 +3889,15 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "95%"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 344,
+                                                lineNumber: 673,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                 value: "100%",
-                                                children: "100%"
+                                                children: "100% – default"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 345,
+                                                lineNumber: 674,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3147,27 +3905,27 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "105%"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 346,
+                                                lineNumber: 675,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                 value: "110%",
-                                                children: "110%"
+                                                children: "110% – spacious"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 347,
+                                                lineNumber: 676,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                        lineNumber: 337,
+                                        lineNumber: 666,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                lineNumber: 335,
+                                lineNumber: 664,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3175,24 +3933,24 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
                                         htmlFor: "radixPanelBackground",
-                                        children: "Radix Panel Background"
+                                        children: "Panel Background"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                        lineNumber: 351,
+                                        lineNumber: 680,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                         id: "radixPanelBackground",
                                         value: radixPanelBackground,
                                         onChange: (e)=>onRadixPanelBackgroundChange(e.target.value),
-                                        className: "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm",
+                                        className: selectClass,
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                 value: "translucent",
                                                 children: "Translucent"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 358,
+                                                lineNumber: 687,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3200,19 +3958,19 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Solid"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 359,
+                                                lineNumber: 688,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                        lineNumber: 352,
+                                        lineNumber: 681,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                lineNumber: 350,
+                                lineNumber: 679,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3220,24 +3978,24 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
                                         htmlFor: "radixAppearance",
-                                        children: "Radix Appearance"
+                                        children: "Appearance Mode"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                        lineNumber: 363,
+                                        lineNumber: 692,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                         id: "radixAppearance",
                                         value: radixAppearance,
                                         onChange: (e)=>onRadixAppearanceChange(e.target.value),
-                                        className: "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm",
+                                        className: selectClass,
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                 value: "light",
                                                 children: "Light"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 370,
+                                                lineNumber: 699,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -3245,139 +4003,39 @@ function AdminThemeFields({ themePrimary, themePrimaryForeground, themeRadius, t
                                                 children: "Dark"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 371,
+                                                lineNumber: 700,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                 value: "inherit",
-                                                children: "Inherit"
+                                                children: "Inherit from system"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                                lineNumber: 372,
+                                                lineNumber: 701,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                        lineNumber: 364,
+                                        lineNumber: 693,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                                lineNumber: 362,
+                                lineNumber: 691,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                        lineNumber: 282,
+                        lineNumber: 611,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 275,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ColorField"], {
-                id: "themePageBackground",
-                label: "Page Background",
-                value: themePageBackground,
-                placeholder: "#f8fafc",
-                fallbackHex: "#f8fafc",
-                onChange: onThemePageBackgroundChange
-            }, void 0, false, {
-                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 377,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-[11px] text-muted-foreground -mt-1",
-                children: "Behind everything on the partner page."
-            }, void 0, false, {
-                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 385,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ColorField"], {
-                id: "themeHeaderBackground",
-                label: "Header Background",
-                value: themeHeaderBackground,
-                placeholder: "#ffffff",
-                fallbackHex: "#ffffff",
-                onChange: onThemeHeaderBackgroundChange
-            }, void 0, false, {
-                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 388,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-[11px] text-muted-foreground -mt-1",
-                children: "Top navigation/header strip background."
-            }, void 0, false, {
-                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 396,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ColorField"], {
-                id: "themeFooterBackground",
-                label: "Footer Background",
-                value: themeFooterBackground,
-                placeholder: "#ffffff",
-                fallbackHex: "#ffffff",
-                onChange: onThemeFooterBackgroundChange
-            }, void 0, false, {
-                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 399,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-[11px] text-muted-foreground -mt-1",
-                children: "Bottom footer strip background."
-            }, void 0, false, {
-                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 407,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ColorField"], {
-                id: "themeCardBackground",
-                label: "Card Background",
-                value: themeCardBackground,
-                placeholder: "#ffffff",
-                fallbackHex: "#ffffff",
-                onChange: onThemeCardBackgroundChange
-            }, void 0, false, {
-                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 410,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-[11px] text-muted-foreground -mt-1",
-                children: "Form container/card surface color."
-            }, void 0, false, {
-                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 418,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$ColorPicker$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ColorField"], {
-                id: "themeCardBorder",
-                label: "Card Border",
-                value: themeCardBorder,
-                placeholder: "#0f172a",
-                fallbackHex: "#0f172a",
-                onChange: onThemeCardBorderChange
-            }, void 0, false, {
-                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 421,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-[11px] text-muted-foreground -mt-1",
-                children: "Border around form cards and framed blocks."
-            }, void 0, false, {
-                fileName: "[project]/src/components/home/AdminThemeFields.tsx",
-                lineNumber: 429,
+                lineNumber: 598,
                 columnNumber: 7
             }, this)
         ]
@@ -6146,6 +6804,9 @@ function PartnerAdminPanel({ onSaved }) {
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$AdminThemeFields$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                previewPartnerName: partnerName,
+                                previewHeadline: headline,
+                                previewDescription: description,
                                 themePrimary: themePrimary,
                                 themePrimaryForeground: themePrimaryForeground,
                                 themeRadius: themeRadius,
@@ -6195,7 +6856,7 @@ function PartnerAdminPanel({ onSaved }) {
                                         children: "Hidden Settings And Feedback"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                        lineNumber: 584,
+                                        lineNumber: 587,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -6203,7 +6864,7 @@ function PartnerAdminPanel({ onSaved }) {
                                         children: "Optional payload settings and feedback toggle."
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                        lineNumber: 587,
+                                        lineNumber: 590,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6224,18 +6885,18 @@ function PartnerAdminPanel({ onSaved }) {
                                             onEnableFeedbackChange: setEnableFeedback
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                            lineNumber: 591,
+                                            lineNumber: 594,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                        lineNumber: 590,
+                                        lineNumber: 593,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                lineNumber: 583,
+                                lineNumber: 586,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("details", {
@@ -6246,7 +6907,7 @@ function PartnerAdminPanel({ onSaved }) {
                                         children: "Section Management"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                        lineNumber: 609,
+                                        lineNumber: 612,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -6254,7 +6915,7 @@ function PartnerAdminPanel({ onSaved }) {
                                         children: "Create and remove form sections."
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                        lineNumber: 612,
+                                        lineNumber: 615,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6267,18 +6928,18 @@ function PartnerAdminPanel({ onSaved }) {
                                             onRemoveSection: removeSection
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                            lineNumber: 616,
+                                            lineNumber: 619,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                        lineNumber: 615,
+                                        lineNumber: 618,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                lineNumber: 608,
+                                lineNumber: 611,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("details", {
@@ -6289,7 +6950,7 @@ function PartnerAdminPanel({ onSaved }) {
                                         children: "Form Structure"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                        lineNumber: 627,
+                                        lineNumber: 630,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -6297,7 +6958,7 @@ function PartnerAdminPanel({ onSaved }) {
                                         children: "Sections, referral entries, and adding fields."
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                        lineNumber: 630,
+                                        lineNumber: 633,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6312,7 +6973,7 @@ function PartnerAdminPanel({ onSaved }) {
                                                 onMaxEntriesChange: setReferralMaxEntries
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                                lineNumber: 634,
+                                                lineNumber: 637,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$AddFieldPanel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -6330,19 +6991,19 @@ function PartnerAdminPanel({ onSaved }) {
                                                 onAdd: addField
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                                lineNumber: 642,
+                                                lineNumber: 645,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                        lineNumber: 633,
+                                        lineNumber: 636,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                lineNumber: 626,
+                                lineNumber: 629,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("details", {
@@ -6353,7 +7014,7 @@ function PartnerAdminPanel({ onSaved }) {
                                         children: "Footer Settings"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                        lineNumber: 659,
+                                        lineNumber: 662,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -6361,7 +7022,7 @@ function PartnerAdminPanel({ onSaved }) {
                                         children: "Optional legal/footer controls for partner pages."
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                        lineNumber: 662,
+                                        lineNumber: 665,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6381,18 +7042,18 @@ function PartnerAdminPanel({ onSaved }) {
                                             onFooterNoteChange: setFooterNote
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                            lineNumber: 666,
+                                            lineNumber: 669,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                        lineNumber: 665,
+                                        lineNumber: 668,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                lineNumber: 658,
+                                lineNumber: 661,
                                 columnNumber: 11
                             }, this)
                         ]
@@ -6409,7 +7070,7 @@ function PartnerAdminPanel({ onSaved }) {
                         onRemoveSection: removeSection
                     }, void 0, false, {
                         fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                        lineNumber: 684,
+                        lineNumber: 687,
                         columnNumber: 9
                     }, this),
                     adminError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -6417,7 +7078,7 @@ function PartnerAdminPanel({ onSaved }) {
                         children: adminError
                     }, void 0, false, {
                         fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                        lineNumber: 692,
+                        lineNumber: 695,
                         columnNumber: 24
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6430,7 +7091,7 @@ function PartnerAdminPanel({ onSaved }) {
                                 children: submitting ? "Saving..." : "Save Partner Config"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                lineNumber: 695,
+                                lineNumber: 698,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -6441,13 +7102,13 @@ function PartnerAdminPanel({ onSaved }) {
                                 children: "Reset"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                                lineNumber: 698,
+                                lineNumber: 701,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/home/PartnerAdminPanel.tsx",
-                        lineNumber: 694,
+                        lineNumber: 697,
                         columnNumber: 9
                     }, this)
                 ]
@@ -8165,6 +8826,8 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "grid grid-cols-1 md:grid-cols-2 gap-4",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$AdminThemeFields$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                    previewPartnerName: partnerName,
+                                    previewHeadline: headline,
                                     themePrimary: themePrimary,
                                     themePrimaryForeground: themePrimaryForeground,
                                     themeRadius: themeRadius,
@@ -8225,7 +8888,7 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                                 children: "Form Structure"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                                lineNumber: 658,
+                                lineNumber: 660,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -8233,7 +8896,7 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                                 children: "Sections, referral entries, and adding fields."
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                                lineNumber: 661,
+                                lineNumber: 663,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8248,7 +8911,7 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                                         onMaxEntriesChange: setReferralMaxEntries
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                                        lineNumber: 665,
+                                        lineNumber: 667,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$SectionsPanel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -8259,26 +8922,26 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                                         onRemoveSection: removeSection
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                                        lineNumber: 673,
+                                        lineNumber: 675,
                                         columnNumber: 13
                                     }, this),
                                     !isMobile && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$AddFieldPanel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                         ...addFieldPanelProps
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                                        lineNumber: 680,
+                                        lineNumber: 682,
                                         columnNumber: 27
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                                lineNumber: 664,
+                                lineNumber: 666,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                        lineNumber: 657,
+                        lineNumber: 659,
                         columnNumber: 9
                     }, this)
                 ]
@@ -8302,7 +8965,7 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                 children: "Cancel"
             }, void 0, false, {
                 fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                lineNumber: 689,
+                lineNumber: 691,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -8312,7 +8975,7 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                 children: saving ? "Saving..." : "Save Changes"
             }, void 0, false, {
                 fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                lineNumber: 696,
+                lineNumber: 698,
                 columnNumber: 7
             }, this)
         ]
@@ -8331,20 +8994,20 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                                 children: isMobileAddFieldStepOpen ? "Add New Field" : `Edit ${partner.partnerName}`
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                                lineNumber: 707,
+                                lineNumber: 709,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$drawer$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DrawerDescription"], {
                                 children: isMobileAddFieldStepOpen ? "Pick a contact request field and assign it to a section." : "Toggle partner availability, manage fields, and update the core copy used by the form shell."
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                                lineNumber: 712,
+                                lineNumber: 714,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                        lineNumber: 706,
+                        lineNumber: 708,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8355,7 +9018,7 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                                 showAddButton: false
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                                lineNumber: 720,
+                                lineNumber: 722,
                                 columnNumber: 15
                             }, this) : formSections,
                             !isMobileAddFieldStepOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -8366,7 +9029,7 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                                 children: "Open Add Field Step"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                                lineNumber: 725,
+                                lineNumber: 727,
                                 columnNumber: 15
                             }, this),
                             error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -8374,13 +9037,13 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                                 children: error
                             }, void 0, false, {
                                 fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                                lineNumber: 734,
+                                lineNumber: 736,
                                 columnNumber: 23
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                        lineNumber: 718,
+                        lineNumber: 720,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$drawer$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DrawerFooter"], {
@@ -8393,7 +9056,7 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                                     children: "Add Field"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                                    lineNumber: 739,
+                                    lineNumber: 741,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -8403,25 +9066,25 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                                     children: "Back To Edit"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                                    lineNumber: 742,
+                                    lineNumber: 744,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true) : actions
                     }, void 0, false, {
                         fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                        lineNumber: 736,
+                        lineNumber: 738,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                lineNumber: 705,
+                lineNumber: 707,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-            lineNumber: 704,
+            lineNumber: 706,
             columnNumber: 7
         }, this);
     }
@@ -8443,20 +9106,20 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                                    lineNumber: 764,
+                                    lineNumber: 766,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DialogDescription"], {
                                     children: "Toggle partner availability, manage fields, and update the core copy used by the form shell."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                                    lineNumber: 765,
+                                    lineNumber: 767,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                            lineNumber: 763,
+                            lineNumber: 765,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -8468,13 +9131,13 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                                     children: error
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                                    lineNumber: 772,
+                                    lineNumber: 774,
                                     columnNumber: 23
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                            lineNumber: 770,
+                            lineNumber: 772,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DialogFooter"], {
@@ -8482,18 +9145,18 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                             children: actions
                         }, void 0, false, {
                             fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                            lineNumber: 774,
+                            lineNumber: 776,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                    lineNumber: 762,
+                    lineNumber: 764,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                lineNumber: 761,
+                lineNumber: 763,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$home$2f$DesktopFieldEditDrawer$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -8504,7 +9167,7 @@ function PartnerEditDialog({ partner, open, onOpenChange, onSaved }) {
                 onClose: ()=>setDesktopFieldDrawerId(null)
             }, void 0, false, {
                 fileName: "[project]/src/components/home/PartnerEditDialog.tsx",
-                lineNumber: 779,
+                lineNumber: 781,
                 columnNumber: 7
             }, this)
         ]

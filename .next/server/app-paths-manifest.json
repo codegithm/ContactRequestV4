@@ -1,3 +1,5 @@
 {
+  "/[partnerId]/feedback/page": "app/[partnerId]/feedback/page.js",
+  "/[partnerId]/page": "app/[partnerId]/page.js",
   "/page": "app/page.js"
 }

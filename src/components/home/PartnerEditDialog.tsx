@@ -103,6 +103,9 @@ export default function PartnerEditDialog({
   const [partnerName, setPartnerName] = useState("");
   const [headline, setHeadline] = useState("");
   const [description, setDescription] = useState("");
+  const [logoUrl, setLogoUrl] = useState("");
+  const [bannerUrl, setBannerUrl] = useState("");
+  const [attachBannerToFormTop, setAttachBannerToFormTop] = useState(false);
   const [themePrimary, setThemePrimary] = useState(defaultThemePrimary);
   const [themePrimaryForeground, setThemePrimaryForeground] = useState(
     defaultThemePrimaryForeground,
@@ -184,6 +187,9 @@ export default function PartnerEditDialog({
     setPartnerName(partner.partnerName);
     setHeadline(partner.headline ?? "");
     setDescription(partner.description ?? "");
+    setLogoUrl(partner.logoUrl ?? "");
+    setBannerUrl(partner.bannerUrl ?? "");
+    setAttachBannerToFormTop(!!partner.attachBannerToFormTop);
     setThemePrimary(partner.theme?.primary ?? defaultThemePrimary);
     setThemePrimaryForeground(partner.theme?.primaryForeground ?? "");
     setThemeRadius(partner.theme?.radius ?? defaultThemeRadius);
@@ -451,6 +457,9 @@ export default function PartnerEditDialog({
       {
         ...partner,
         partnerName: partnerName.trim() || partner.partnerName,
+        logoUrl: logoUrl.trim() || undefined,
+        bannerUrl: bannerUrl.trim() || undefined,
+        attachBannerToFormTop,
         headline: headline.trim() || undefined,
         description: description.trim() || undefined,
         isActive,
@@ -561,6 +570,38 @@ export default function PartnerEditDialog({
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
+          <div className="space-y-2 sm:col-span-2">
+            <label className="text-sm font-medium">Logo URL</label>
+            <Input
+              value={logoUrl}
+              onChange={(e) => setLogoUrl(e.target.value)}
+              placeholder="https://cdn.example.com/logo.svg"
+            />
+          </div>
+          <div className="space-y-2 sm:col-span-2">
+            <label className="text-sm font-medium">Banner URL</label>
+            <Input
+              value={bannerUrl}
+              onChange={(e) => setBannerUrl(e.target.value)}
+              placeholder="https://cdn.example.com/banner.png"
+            />
+          </div>
+          <div className="sm:col-span-2 rounded-md border border-border p-3">
+            <label className="flex items-center justify-between gap-3 text-sm">
+              <span className="space-y-0.5">
+                <span className="block font-medium">
+                  Attach Banner To Form Top
+                </span>
+                <span className="block text-xs text-muted-foreground">
+                  Uses Banner URL and attaches it centered above the form card.
+                </span>
+              </span>
+              <Switch
+                checked={attachBannerToFormTop}
+                onCheckedChange={setAttachBannerToFormTop}
+              />
+            </label>
+          </div>
         </div>
         <EditPartnerFieldsSection
           isMobile={isMobile}
@@ -615,6 +656,8 @@ export default function PartnerEditDialog({
           <h3 className="text-sm font-semibold text-foreground">Theme</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <AdminThemeFields
+              previewPartnerName={partnerName}
+              previewHeadline={headline}
               themePrimary={themePrimary}
               themePrimaryForeground={themePrimaryForeground}
               themeRadius={themeRadius}
