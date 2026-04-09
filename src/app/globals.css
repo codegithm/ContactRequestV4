@@ -9,7 +9,7 @@
     --font-sans: "Geist", system-ui, -apple-system, sans-serif;
     --font-mono: "IBM Plex Mono", monospace;
 
-    /* Default brand (neutral) */
+    
     --brand-primary: 220 14% 20%;
     --brand-primary-foreground: 0 0% 100%;
 
@@ -48,7 +48,7 @@
     --shadow-elevated:
       0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
 
-    /* Partner shell surfaces */
+    
     --partner-page-background: #f8fafc;
     --partner-header-background: rgba(255, 255, 255, 0.92);
     --partner-footer-background: rgba(255, 255, 255, 0.9);
@@ -71,7 +71,7 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  /* Optional partner defaults injected via data attribute */
+  
   [data-partner="absa"] {
     --brand-primary: 354 85% 44%;
     --brand-primary-foreground: 0 0% 100%;

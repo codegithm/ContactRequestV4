@@ -94,6 +94,15 @@ export interface ContactRequestModel {
   alternativeNumber?: string;
 }
 
+export interface CreateContactResponse {
+  LongContactID: string;
+  ContactID: string;
+  DedupeStatuseCode: string;
+  ResponseDescription: string;
+  DedupeStatusDescription: string;
+  Message: string;
+}
+
 export const contactRequestModelFieldIds: ReadonlyArray<
   keyof ContactRequestModel
 > = [

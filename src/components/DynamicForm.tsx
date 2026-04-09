@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
@@ -14,17 +13,14 @@ import RepeatableSectionBlock from "@/components/RepeatableSectionBlock";
 import { submitContactRequest } from "@/lib/api";
 import { isFieldFilled, validateField } from "@/lib/form-validation";
 import type { PartnerConfig, FieldSchema } from "@/lib/partners";
-
 interface DynamicFormProps {
   config: PartnerConfig;
 }
-
 const springTransition = {
   type: "spring" as const,
   stiffness: 400,
   damping: 30,
 };
-
 const DynamicForm = ({ config }: DynamicFormProps) => {
   const { setApiLoading } = useLoading();
   const [formData, setFormData] = useState<Record<string, string>>({});
@@ -38,12 +34,11 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submittedContactIds, setSubmittedContactIds] = useState<string[]>([]);
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [termsOpen, setTermsOpen] = useState(false);
   const [termsError, setTermsError] = useState(false);
-
   const hasTerms = !!config.termsAndConditions;
-
   const sectionConfigs = useMemo(
     () =>
       (config.sections ?? [])
@@ -54,7 +49,6 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
         .filter((section) => section.fields.length > 0),
     [config.sections],
   );
-
   const repeatableSections = useMemo(
     () =>
       sectionConfigs.filter(
@@ -65,7 +59,6 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
       ),
     [sectionConfigs],
   );
-
   const standardSections = useMemo(
     () =>
       sectionConfigs.filter(
@@ -78,26 +71,21 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
       ),
     [sectionConfigs],
   );
-
   const allFields = useMemo(() => {
     if (config.sections?.length) {
       return standardSections.flatMap((section) => section.fields);
     }
-
     return config.fields.filter((field) => field.isActive !== false);
   }, [config.sections, config.fields, standardSections]);
-
   const repeatableFields = useMemo(
     () => repeatableSections.flatMap((section) => section.fields),
     [repeatableSections],
   );
-
   const fieldIndexMap = useMemo(() => {
     const map = new Map<string, number>();
     allFields.forEach((f, i) => map.set(f.id, i));
     return map;
   }, [allFields]);
-
   const progress = useMemo(() => {
     const requiredFields = allFields.filter((f) => f.required);
     if (requiredFields.length === 0) return 100;
@@ -106,7 +94,6 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
     ).length;
     return Math.round((filled / requiredFields.length) * 100);
   }, [formData, allFields]);
-
   const referralCount = useMemo(
     () =>
       repeatableSections.reduce(
@@ -116,7 +103,6 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
       ),
     [repeatableEntries, repeatableSections],
   );
-
   const handleChange = useCallback(
     (id: string, value: string) => {
       setFormData((prev) => ({ ...prev, [id]: value }));
@@ -129,7 +115,6 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
     },
     [submitError],
   );
-
   const handleRepeatableChange = useCallback(
     (sectionId: string, fieldId: string, value: string) => {
       setRepeatableDrafts((prev) => ({
@@ -139,7 +124,6 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
           [fieldId]: value,
         },
       }));
-
       const errorKey = `${sectionId}::${fieldId}`;
       setErrors((prev) => {
         if (!(errorKey in prev)) return prev;
@@ -150,15 +134,12 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
     },
     [],
   );
-
   const addRepeatableEntry = useCallback(
     (sectionId: string) => {
       const section = repeatableSections.find((item) => item.id === sectionId);
       if (!section) return;
-
       const draft = repeatableDrafts[sectionId] ?? {};
       const draftErrors: Record<string, string> = {};
-
       section.fields.forEach((field) => {
         const value = draft[field.id] || "";
         const error = validateField(field, value);
@@ -166,25 +147,21 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
           draftErrors[`${sectionId}::${field.id}`] = error;
         }
       });
-
       if (Object.keys(draftErrors).length > 0) {
         setErrors((prev) => ({ ...prev, ...draftErrors }));
         return;
       }
-
       setRepeatableEntries((prev) => {
         const currentEntries = prev[sectionId] ?? [];
         const maxEntries = section.maxEntries;
         if (maxEntries && currentEntries.length >= maxEntries) {
           return prev;
         }
-
         return {
           ...prev,
           [sectionId]: [...currentEntries, draft],
         };
       });
-
       setRepeatableDrafts((prev) => ({
         ...prev,
         [sectionId]: {},
@@ -192,25 +169,20 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
     },
     [repeatableDrafts, repeatableSections],
   );
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     const newErrors: Record<string, string> = {};
     allFields.forEach((field) => {
       const error = validateField(field, formData[field.id] || "");
       if (error) newErrors[field.id] = error;
     });
-
     if (hasTerms && !termsAccepted) {
       setTermsError(true);
     }
-
     if (Object.keys(newErrors).length > 0 || (hasTerms && !termsAccepted)) {
       setErrors(newErrors);
       return;
     }
-
     setSubmitError(null);
     setSubmitting(true);
     setApiLoading(true);
@@ -218,7 +190,7 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
       const referralEntries = repeatableSections.flatMap(
         (section) => repeatableEntries[section.id] ?? [],
       );
-
+      const nextContactIds: string[] = [];
       if (referralEntries.length > 0) {
         const submissionFields = [...allFields, ...repeatableFields];
         const requests = referralEntries.map((entry) =>
@@ -228,24 +200,34 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
             formData: { ...formData, ...entry },
           }),
         );
-
         const results = await Promise.allSettled(requests);
         const failedCount = results.filter(
           (result) => result.status === "rejected",
         ).length;
-
         if (failedCount > 0) {
           throw new Error(
             `${failedCount} referral submission${failedCount > 1 ? "s" : ""} failed. Please retry.`,
           );
         }
+        results.forEach((result) => {
+          if (result.status !== "fulfilled") return;
+          const contactId = result.value.ContactID?.trim();
+          if (contactId) {
+            nextContactIds.push(contactId);
+          }
+        });
       } else {
-        await submitContactRequest({
+        const result = await submitContactRequest({
           config,
           configuredFields: allFields,
           formData,
         });
+        const contactId = result.ContactID?.trim();
+        if (contactId) {
+          nextContactIds.push(contactId);
+        }
       }
+      setSubmittedContactIds(nextContactIds);
       setSubmitted(true);
     } catch (error) {
       const message =
@@ -258,18 +240,17 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
       setApiLoading(false);
     }
   };
-
   const handleSendAnother = useCallback(() => {
     setFormData({});
     setRepeatableDrafts({});
     setRepeatableEntries({});
     setErrors({});
     setSubmitError(null);
+    setSubmittedContactIds([]);
     setTermsAccepted(false);
     setTermsError(false);
     setSubmitted(false);
   }, []);
-
   return (
     <>
       <ProgressBar progress={submitted ? 100 : progress} />
@@ -438,6 +419,12 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
             <p className="text-muted-foreground max-w-md mx-auto">
               {config.successMessage || "Thank you! We'll be in touch soon."}
             </p>
+            {!!submittedContactIds.length && (
+              <p className="text-sm font-medium text-foreground max-w-md mx-auto">
+                Contact ID{submittedContactIds.length > 1 ? "s" : ""}:{" "}
+                {submittedContactIds.join(", ")}
+              </p>
+            )}
             <div className="pt-2">
               <Button
                 type="button"
@@ -462,5 +449,4 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
     </>
   );
 };
-
 export default DynamicForm;

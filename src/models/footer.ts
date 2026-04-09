@@ -1,34 +1,19 @@
 export interface PartnerFooterLink {
-  label: string;
-  url?: string;
-  /** Semantic type for analytics/styling */
-  type?: "privacy" | "terms" | "contact" | "custom";
+    label: string;
+    url?: string;
+    type?: "privacy" | "terms" | "contact" | "custom";
 }
-
 export interface PartnerFooterLogo {
-  label: string;
-  logoUrl: string;
-  /** Optional target URL when clicking the logo */
-  url?: string;
+    label: string;
+    logoUrl: string;
+    url?: string;
 }
-
 export interface PartnerFooterConfig {
-  /** Show the "Powered by" label. Default: true */
-  showPoweredBy?: boolean;
-  /** Override the brand shown in "Powered by". Default: "ContactRequest" */
-  poweredByLabel?: string;
-  /** Make the powered-by text a link */
-  poweredByUrl?: string;
-  /** Footer nav links */
-  links?: PartnerFooterLink[];
-  /** Partner logos rendered as a footer strip */
-  logos?: PartnerFooterLogo[];
-  /**
-   * split (default): powered-by left, links right
-   * centered: everything centred
-   * links-only: no powered-by, links centred
-   */
-  layout?: "split" | "centered" | "links-only";
-  /** Small disclaimer/legal note shown below the main footer row */
-  note?: string;
+    showPoweredBy?: boolean;
+    poweredByLabel?: string;
+    poweredByUrl?: string;
+    links?: PartnerFooterLink[];
+    logos?: PartnerFooterLogo[];
+    layout?: "split" | "centered" | "links-only";
+    note?: string;
 }

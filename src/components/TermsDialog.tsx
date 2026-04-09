@@ -1,22 +1,13 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
-
 interface TermsDialogProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  partnerName: string;
-  content: string;
+    open: boolean;
+    onOpenChange: (open: boolean) => void;
+    partnerName: string;
+    content: string;
 }
-
 const TermsDialog = ({ open, onOpenChange, partnerName, content }: TermsDialogProps) => {
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    return (<Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-lg">
         <DialogHeader>
           <DialogTitle>{partnerName} Terms & Conditions</DialogTitle>
@@ -30,8 +21,6 @@ const TermsDialog = ({ open, onOpenChange, partnerName, content }: TermsDialogPr
           </div>
         </ScrollArea>
       </DialogContent>
-    </Dialog>
-  );
+    </Dialog>);
 };
-
 export default TermsDialog;
