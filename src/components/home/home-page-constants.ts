@@ -1,20 +1,20 @@
 import { Palette, Shield, Zap } from "lucide-react";
 export const springTransition = {
-    type: "spring" as const,
-    stiffness: 400,
-    damping: 30,
+  type: "spring" as const,
+  stiffness: 400,
+  damping: 30,
 };
 export const homeFeatureCards = [
-    {
-        icon: Palette,
-        title: "Partner Theming",
-        desc: "Radix Theme tokens per partner",
-    },
-    {
-        icon: Zap,
-        title: "Dynamic Fields",
-        desc: "Schema-driven form rendering",
-    },
+  {
+    icon: Palette,
+    title: "Partner Theming",
+    desc: "Radix Theme tokens per partner",
+  },
+  {
+    icon: Zap,
+    title: "Dynamic Fields",
+    desc: "Schema-driven form rendering",
+  },
 ];
 export const defaultThemePrimary = "220 14% 20%";
 export const defaultThemePrimaryForeground = "0 0% 100%";
@@ -35,5 +35,8 @@ export const defaultRadixPanelBackground = "translucent" as const;
 export const defaultRadixAppearance = "light" as const;
 export const defaultFooterLayout = "split" as const;
 export const defaultFooterPoweredByLabel = "ContactRequest";
-export const defaultFooterLinksJson = '[{"label":"Privacy","type":"privacy"},{"label":"Terms","type":"terms"}]';
+export const defaultFooterLinksJson =
+  '[{"label":"Privacy","type":"privacy"},{"label":"Terms","type":"terms"}]';
 export const defaultFooterLogosJson = "[]";
+export const defaultConsentLabel =
+  "I consent to be contacted regarding this request.";

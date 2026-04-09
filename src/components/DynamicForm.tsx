@@ -39,6 +39,15 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
   const [termsOpen, setTermsOpen] = useState(false);
   const [termsError, setTermsError] = useState(false);
   const hasTerms = !!config.termsAndConditions;
+  const hasConsentCheckbox = !!config.consentCheckbox?.enabled || hasTerms;
+  const consentRequired = hasConsentCheckbox
+    ? (config.consentCheckbox?.required ?? hasTerms)
+    : false;
+  const consentLabel =
+    config.consentCheckbox?.label?.trim() ||
+    (hasTerms
+      ? "I agree to the Terms & Conditions"
+      : "I consent to be contacted regarding this request.");
   const sectionConfigs = useMemo(
     () =>
       (config.sections ?? [])
@@ -176,10 +185,13 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
       const error = validateField(field, formData[field.id] || "");
       if (error) newErrors[field.id] = error;
     });
-    if (hasTerms && !termsAccepted) {
+    if (consentRequired && !termsAccepted) {
       setTermsError(true);
     }
-    if (Object.keys(newErrors).length > 0 || (hasTerms && !termsAccepted)) {
+    if (
+      Object.keys(newErrors).length > 0 ||
+      (consentRequired && !termsAccepted)
+    ) {
       setErrors(newErrors);
       return;
     }
@@ -332,7 +344,7 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
               </div>
             )}
 
-            {hasTerms && (
+            {hasConsentCheckbox && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -356,19 +368,24 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
                     htmlFor="terms"
                     className="text-sm text-muted-foreground leading-snug cursor-pointer"
                   >
-                    I agree to the{" "}
-                    <button
-                      type="button"
-                      onClick={() => setTermsOpen(true)}
-                      className="text-brand underline underline-offset-2 hover:opacity-80 transition-opacity font-medium"
-                    >
-                      Terms & Conditions
-                    </button>
+                    {consentLabel}
+                    {hasTerms ? (
+                      <>
+                        {" "}
+                        <button
+                          type="button"
+                          onClick={() => setTermsOpen(true)}
+                          className="text-brand underline underline-offset-2 hover:opacity-80 transition-opacity font-medium"
+                        >
+                          Read Terms & Conditions
+                        </button>
+                      </>
+                    ) : null}
                   </label>
                 </div>
                 {termsError && (
                   <p className="text-xs text-destructive ml-6">
-                    You must accept the terms and conditions
+                    You must provide consent to continue
                   </p>
                 )}
               </motion.div>
@@ -379,7 +396,8 @@ const DynamicForm = ({ config }: DynamicFormProps) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 ...springTransition,
-                delay: allFields.length * 0.05 + (hasTerms ? 0.05 : 0),
+                delay:
+                  allFields.length * 0.05 + (hasConsentCheckbox ? 0.05 : 0),
               }}
             >
               <Button
